@@ -1,16 +1,14 @@
-import {Stack, Dialog, DialogTitle, DialogContent, IconButton, Menu, useTheme, SvgIcon} from "@mui/material";
+import {useEffect, useRef, useState} from "react";
+import {motion} from '../utils/motion';
 import ContainerWrapper from "../components/ContainerWrapper";
-import {INSTAGRAM, SECTION_COMMON_PY, TIKTOK} from "../utils/constant";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import {useState} from "react";
+import {INSTAGRAM, TIKTOK} from "../utils/constant";
+import Typography from "../components/Typography";
+import StrokeIcon from "../components/StrokeIcon";
 import {privacyPolicy} from "../data/privacy";
 import {cookiePolicy} from "../data/cookie";
-import {Close} from "@mui/icons-material";
-import {motion} from 'motion/react';
-import Button from "@mui/material/Button";
 import Instagram from "../assets/icons/Instagram";
 import TikTok from "../assets/icons/TikTok";
+import styles from './Footer.module.css';
 
 export default function Footer({footer}) {
   const [openPrivacy, setOpenPrivacy] = useState(false);
@@ -26,80 +24,50 @@ export default function Footer({footer}) {
     setOpenCookie(true);
   };
   const onCloseCookie = () => setOpenCookie(false);
-  const theme = useTheme();
+
   return (
-    <ContainerWrapper
-      sx={{
-        py: SECTION_COMMON_PY,
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <ContainerWrapper paddingY className={styles.wrapper}>
       <motion.div
-        initial={{opacity: 0, y: 10}}
+        initial={{opacity: 0, y: 6}}
         whileInView={{opacity: 1, y: 0}}
         viewport={{once: true}}
-        transition={{duration: 0.5, delay: 0.5}}
+        transition={{duration: 0.35, delay: 0.2}}
       >
-        <Stack
-          direction="column"
-          alignItems="center"
-        >
-          <Stack direction="row" spacing={0}>
-            <Button
-              component="a"
+        <div className={styles.stack}>
+          <div className={styles.socialRow}>
+            <a
+              className={styles.iconButton}
               target="_blank"
               href={INSTAGRAM}
-              size="small"
               rel="noopener noreferrer"
               aria-label="nav-secondary-btn"
             >
-              <SvgIcon
-                component={Instagram}
-                inheritViewBox
-                sx={{
-                  fill: 'none',
-                  stroke: theme.palette.primary.dark,
-                  strokeWidth: 1,
-                  strokeLinecap: 'round',
-                  strokeLinejoin: 'round',
-                  fontSize: 36,
-                }}
-              />
-            </Button>
-            <Button
-              component="a"
+              <StrokeIcon icon={Instagram} size={36} color="var(--color-primary-dark)" strokeWidth={1}/>
+            </a>
+            <a
+              className={styles.iconButton}
               target="_blank"
               href={TIKTOK}
-              size="small"
               rel="noopener noreferrer"
               aria-label="nav-secondary-btn"
             >
-              <SvgIcon
-                component={TikTok}
-                inheritViewBox
-                sx={{
-                  fill: 'none',
-                  stroke: theme.palette.primary.dark,
-                  strokeWidth: 1,
-                  strokeLinecap: 'round',
-                  strokeLinejoin: 'round',
-                  fontSize: 36,
-                }}
-              />
-            </Button>
-          </Stack>
+              <StrokeIcon icon={TikTok} size={36} color="var(--color-primary-dark)" strokeWidth={1}/>
+            </a>
+          </div>
           {footer.map((item, i) => (
-            <Typography key={i} variant="subtitle2" textAlign="center">
+            <Typography key={i} variant="subtitle2" align="center">
               {item}
             </Typography>
           ))}
-          <Stack direction="row"
-                 alignItems="center" spacing={3}>
-            <Link variant="subtitle2" onClick={handleOpenPrivacy}>Privacy Policy</Link>
-            <Link variant="subtitle2" onClick={handleOpenCookie}>Cookie Policy</Link>
-          </Stack>
-        </Stack>
+          <div className={styles.linksRow}>
+            <button type="button" className={styles.link} onClick={handleOpenPrivacy}>
+              <Typography variant="subtitle2" color="var(--color-primary-dark)">Privacy Policy</Typography>
+            </button>
+            <button type="button" className={styles.link} onClick={handleOpenCookie}>
+              <Typography variant="subtitle2" color="var(--color-primary-dark)">Cookie Policy</Typography>
+            </button>
+          </div>
+        </div>
       </motion.div>
 
       <LargeDialog
@@ -117,38 +85,48 @@ export default function Footer({footer}) {
 }
 
 function LargeDialog({title, content, open, onClose}) {
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (open) {
+      if (!dialog.open) dialog.showModal();
+      document.body.style.overflow = 'hidden';
+    } else {
+      if (dialog.open) dialog.close();
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  const handleBackdropClick = (event) => {
+    const rect = dialogRef.current.getBoundingClientRect();
+    const insideDialog =
+      rect.top <= event.clientY && event.clientY <= rect.bottom &&
+      rect.left <= event.clientX && event.clientX <= rect.right;
+    if (!insideDialog) onClose();
+  };
+
   return (
-    <Dialog
-      open={open}
+    <dialog
+      ref={dialogRef}
+      className={styles.dialog}
       onClose={onClose}
-      fullWidth
-      maxWidth="md"
-      slotProps={{
-        paper: {
-          sx: {
-            borderRadius: 6,
-          },
-        },
-      }}
+      onClick={handleBackdropClick}
     >
-      <DialogTitle>
-        {title}
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[900],
-          }}
-        >
-          <Close/>
-        </IconButton>
-      </DialogTitle>
-      <DialogContent dividers>
-        <Typography sx={{whiteSpace: 'pre-line'}}>{content}</Typography>
-      </DialogContent>
-    </Dialog>
-  )
+      <div className={styles.titleRow}>
+        <Typography variant="h6">{title}</Typography>
+        <button type="button" className={styles.closeButton} aria-label="close" onClick={onClose}>
+          <svg width={24} height={24} viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      </div>
+      <div className={styles.content}>
+        <Typography style={{whiteSpace: 'pre-line'}}>{content}</Typography>
+      </div>
+    </dialog>
+  );
 }

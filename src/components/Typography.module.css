@@ -1,0 +1,152 @@
+/* Breakpoints here intentionally match MUI's stock defaults (900px / 600px),
+   not this app's custom layout breakpoints (1024px / 768px) -- the original
+   theme built its typography off a fresh default theme, see theme/breakpoints.js */
+
+.root {
+  margin: 0;
+  font-family: inherit;
+}
+
+.h1 {
+  font-weight: 400;
+  font-size: 57px;
+  line-height: 1.123;
+  letter-spacing: -0.25px;
+}
+@media (max-width: 899.95px) {
+  .h1 { font-size: 45px; line-height: 1.156; }
+}
+@media (max-width: 599.95px) {
+  .h1 { font-size: 32px; line-height: 1.222; }
+}
+
+.h2 {
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 1.156;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h2 { font-size: 36px; line-height: 1.222; }
+}
+@media (max-width: 599.95px) {
+  .h2 { font-size: 24px; line-height: 1.333; }
+}
+
+.h3 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.286;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h3 { font-size: 24px; line-height: 1.333; }
+}
+@media (max-width: 599.95px) {
+  .h3 { font-size: 20px; line-height: 1.4; }
+}
+
+.h4 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.333;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h4 { font-size: 20px; line-height: 1.4; }
+}
+@media (max-width: 599.95px) {
+  .h4 { font-size: 16px; line-height: 1.5; }
+}
+
+.h5 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.273;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h5 { font-size: 16px; line-height: 1.5; letter-spacing: 0.15px; }
+}
+
+.h6 {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.364;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h6 { font-size: 16px; line-height: 1.5; letter-spacing: 0.5px; }
+}
+
+.h7 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.364;
+  letter-spacing: 0;
+}
+@media (max-width: 899.95px) {
+  .h7 { font-size: 18px; line-height: 1.5; letter-spacing: 0.5px; }
+}
+
+.body1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 899.95px) {
+  .body1 { font-size: 14px; line-height: 1.429; letter-spacing: 0.25px; }
+}
+
+.body2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.429;
+  letter-spacing: 0.25px;
+}
+@media (max-width: 899.95px) {
+  .body2 { font-size: 12px; line-height: 1.5; }
+}
+
+.subtitle1 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+}
+@media (max-width: 899.95px) {
+  .subtitle1 { font-weight: 600; font-size: 14px; line-height: 1.429; letter-spacing: 0.1px; }
+}
+
+.subtitle2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+}
+
+.caption {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.333;
+  letter-spacing: 0;
+}
+
+.caption1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.caption2 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.429;
+  letter-spacing: 0.1px;
+}
+
+.alignCenter { text-align: center; }
+.alignLeft { text-align: left; }
+.alignRight { text-align: right; }

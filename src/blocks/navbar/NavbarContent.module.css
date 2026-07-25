@@ -1,0 +1,53 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pillContainer {
+  background-color: var(--color-grey-200);
+  border-radius: 40px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 8px;
+}
+
+@media (min-width: 1024px) {
+  .actions {
+    gap: 12px;
+  }
+}
+
+.mobileActionsWrap {
+  flex-grow: 1;
+}
+
+.drawerContent {
+  height: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 64px);
+}
+
+@media (min-width: 768px) {
+  .drawerContent {
+    max-height: calc(100vh - 72px);
+  }
+}
+
+.drawerFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background-color: var(--color-background-paper);
+}

@@ -1,23 +1,18 @@
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { motion } from 'motion/react';
-import {SECTION_COMMON_PY} from "../utils/constant";
+import { motion } from '../utils/motion';
+import useMediaQuery from "../hooks/useMediaQuery";
+import { mqDown } from "../theme/breakpoints";
 import Typeset from "../components/Typeset";
 import GraphicsCard from "../components/GraphicsCard";
-import {SvgIcon} from "@mui/material";
+import StrokeIcon from "../components/StrokeIcon";
+import Typography from "../components/Typography";
+import Button from "../components/Button";
 import ButtonAnimationWrapper from "../components/ButtonAnimationWrapper";
 import ContainerWrapper from "../components/ContainerWrapper";
+import styles from './Reasons.module.css';
 
-export default function Reasons({ heading, caption, image, features, actionBtn, secondaryBtn }) {
-  const theme = useTheme();
-  const downSM = useMediaQuery(theme.breakpoints.down('sm'));
-  const downMD = useMediaQuery(theme.breakpoints.down('md'));
+export default function Reasons({ heading, caption, features, actionBtn, secondaryBtn }) {
+  const downSM = useMediaQuery(mqDown(768));
+  const downMD = useMediaQuery(mqDown(1024));
 
   const partitionInExtraSmall = 1;
   const partitionInSmall = 2;
@@ -56,117 +51,94 @@ export default function Reasons({ heading, caption, image, features, actionBtn, 
   const indicesOfLastElements = calculateIndexOfLastElementOfEachRow(features, columns);
 
   return (
-    <ContainerWrapper sx={{ py: SECTION_COMMON_PY, mt: -2 }}>
-      <Stack sx={{ gap: { xs: 3, sm: 4, md: 5 } }}>
+    <ContainerWrapper paddingY className={styles.wrapper}>
+      <div className={styles.stack}>
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.5,
-            delay: 0.3
-          }}
+          transition={{ duration: 0.35, delay: 0.15 }}
         >
-          <Typeset {...{ heading, stackProps: { sx: { maxWidth: { md: 500 }, ...(!image && { maxWidth: 1, textAlign: 'center' }) } } }} />
+          <Typeset heading={heading} className={styles.headingWrap} />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.5,
-            delay: 0.4
-          }}
+          transition={{ duration: 0.35, delay: 0.2 }}
         >
-          <GraphicsCard sx={{ position: 'relative', overflow: 'visible' }}>
-            <Box sx={{ p: 3 }}>
-              <Grid container>
+          <GraphicsCard style={{ position: 'relative', overflow: 'visible' }}>
+            <div className={styles.cardInner}>
+              <div className={styles.grid} style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
                 {features.map((item, index) => (
-                  <Grid
+                  <div
                     key={index}
-                    size={{ xs: 12 / partitionInExtraSmall, sm: 12 / partitionInSmall, md: 12 / partitionInLarge }}
-                    sx={{
-                      position: 'relative',
-                      ...(index < indexOfFirstElementInLastRow && { borderBottom: `1px solid ${theme.vars.palette.grey[300]}` }),
-                      ...(!indicesOfLastElements.includes(index) && { borderRight: `1px solid ${theme.vars.palette.grey[300]}` })
+                    className={styles.cell}
+                    style={{
+                      borderBottom: index < indexOfFirstElementInLastRow ? '1px solid var(--color-grey-300)' : undefined,
+                      borderRight: !indicesOfLastElements.includes(index) ? '1px solid var(--color-grey-300)' : undefined
                     }}
                   >
-                    <Stack sx={{ gap: { xs: 1, sm: 2 }, height: 1, py: { xs: 1.5, sm: 3, md: 4 }, px: { xs: 0, sm: 3, md: 4 } }}>
-                      <Avatar sx={{ width: 60, height: 60, bgcolor: 'grey.300' }}>
+                    <div className={styles.cellInner}>
+                      <div className={styles.avatar}>
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.6 }}
+                          initial={{ opacity: 0, scale: 0.85 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 2, delay: index * 0.1 }}
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
                         >
-                          <SvgIcon
-                            component={item.icon}
-                            inheritViewBox
-                            sx={{
-                              fill: 'none',
-                              stroke: theme.palette.secondary.dark,
-                              strokeWidth: 2,
-                              strokeLinecap: 'round',
-                              strokeLinejoin: 'round',
-                              fontSize: 32,
-                            }}/>
+                          <StrokeIcon icon={item.icon} size={32} color="var(--color-secondary-dark)" strokeWidth={2} />
                         </motion.div>
-                      </Avatar>
-                      <Stack sx={{ gap: { xs: 0.5, md: 1 } }}>
+                      </div>
+                      <div className={styles.textStack}>
                         <motion.div
-                          initial={{ opacity: 0, y: 25 }}
+                          initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.2 }}
+                          transition={{ duration: 0.35, delay: index * 0.06 }}
                         >
                           {item.title && <Typography variant="h4">{item.title}</Typography>}
                         </motion.div>
                         <motion.div
-                          initial={{ opacity: 0, y: 25 }}
+                          initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.3 }}
+                          transition={{ duration: 0.35, delay: index * 0.08 }}
                         >
-                          {item.content && <Typography sx={{ color: 'text.secondary' }}>{item.content}</Typography>}
+                          {item.content && <Typography style={{ color: 'var(--color-text-secondary)' }}>{item.content}</Typography>}
                         </motion.div>
-                      </Stack>
-                    </Stack>
-                  </Grid>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </Grid>
-            </Box>
+              </div>
+            </div>
           </GraphicsCard>
         </motion.div>
-        <Stack sx={{ alignItems: 'center', gap: 3 }}>
-          <Typography variant="h6" sx={{ color: 'text.secondary', maxWidth: { xs: '75%', sm: '45%' }, textAlign: 'center' }}>
+        <div className={styles.ctaStack}>
+          <Typography variant="h6" className={styles.ctaCaption} style={{ color: 'var(--color-text-secondary)' }}>
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: 0.4
-              }}
+              transition={{ duration: 0.35, delay: 0.2 }}
             >
               {caption}
             </motion.div>
           </Typography>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: 0.5
-            }}
+            transition={{ duration: 0.35, delay: 0.25 }}
           >
-            <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'center', gap: 1.5 }}>
+            <div className={styles.ctaButtons}>
               {secondaryBtn && (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                  whileHover={{ scale: 1.03 }}
                 >
                   <ButtonAnimationWrapper>
                     <Button variant="outlined" {...secondaryBtn} />
@@ -175,25 +147,20 @@ export default function Reasons({ heading, caption, image, features, actionBtn, 
               )}
               {actionBtn && (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                  whileHover={{ scale: 1.03 }}
                 >
                   <ButtonAnimationWrapper>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<SvgIcon name="tabler-sparkles" size={16} stroke={3} color="background.default" />}
-                      {...actionBtn}
-                    />
+                    <Button variant="contained" color="primary" {...actionBtn} />
                   </ButtonAnimationWrapper>
                 </motion.div>
               )}
-            </Stack>
+            </div>
           </motion.div>
-        </Stack>
-      </Stack>
+        </div>
+      </div>
     </ContainerWrapper>
   );
 }

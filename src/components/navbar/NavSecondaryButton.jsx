@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button';
+import Button from '../Button';
 
-export default function NavSecondaryButton({ sx, children, ...rest }) {
+export default function NavSecondaryButton({ style, children, ...rest }) {
   return (
     <Button
       variant="outlined"
       size="small"
-      sx={sx}
+      style={style}
       {...rest}
       rel="noopener noreferrer"
       aria-label="nav-secondary-btn"

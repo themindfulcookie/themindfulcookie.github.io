@@ -32,12 +32,12 @@ export const reasons = {
     {
       icon: UserHeart,
       title: "Fame emotiva",
-      content: "Capire che il cibo non è la soluzione alle tue emozioni.",
+      content: "Imparare ad ascoltare le necessità del corpo.",
     },
     {
       icon: Plant,
       title: "Peso naturale",
-      content: "Trovare un peso di salute in sintonia con il tuo corpo.",
+      content: "Accogliere un peso di salute in sintonia con il tuo corpo.",
     },
   ],
 };

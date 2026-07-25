@@ -1,38 +1,23 @@
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import Typography from './Typography';
+import styles from './Typeset.module.css';
 
-export default function Typeset({
-  heading,
-  caption,
-  stackProps,
-  headingProps,
-  captionProps,
-}) {
-  const { sx, ...rest } = stackProps || {};
-
+export default function Typeset({ heading, caption, style, className, headingStyle, captionStyle, captionClassName }) {
   return (
-    <Stack {...rest} sx={{ gap: { xs: 1, sm: 1.5 }, ...sx }}>
-      <Typography
-        variant="h2"
-        {...headingProps}
-        sx={{ ...(headingProps?.sx && { ...headingProps.sx }) }}
-      >
+    <div className={[styles.stack, className].filter(Boolean).join(' ')} style={style}>
+      <Typography variant="h2" style={headingStyle}>
         {heading}
       </Typography>
       {caption && (
         <Typography
           component="p"
           variant="h6"
-          {...captionProps}
-          sx={{
-            whiteSpace: "pre-line",
-            color: "text.secondary",
-            ...(captionProps?.sx && { ...captionProps.sx }),
-          }}
+          color="var(--color-text-secondary)"
+          className={captionClassName}
+          style={{ whiteSpace: 'pre-line', ...captionStyle }}
         >
           {caption}
         </Typography>
       )}
-    </Stack>
+    </div>
   );
 }

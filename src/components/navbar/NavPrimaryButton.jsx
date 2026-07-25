@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button';
+import Button from '../Button';
 
-export default function NavPrimaryButton({ sx, children, ...rest }) {
+export default function NavPrimaryButton({ style, children, ...rest }) {
   return (
     <Button
       variant="contained"
       size="small"
-      sx={sx}
+      style={style}
       {...rest}
       rel="noopener noreferrer"
       aria-label="nav-primary-btn"

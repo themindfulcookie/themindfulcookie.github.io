@@ -1,0 +1,154 @@
+.wrapper {
+  margin-top: -16px;
+}
+@media (min-width: 1024px) {
+  .wrapper { margin-top: -48px; }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.headingWrap {
+  text-align: center;
+}
+
+.plansRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.planCol {
+  flex: 1 1 100%;
+  max-width: 100%;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .planCol { flex-basis: calc(50% - 6px); max-width: calc(50% - 6px); }
+}
+@media (min-width: 1024px) {
+  .planCol { flex-basis: calc(33.3333% - 8px); max-width: calc(33.3333% - 8px); }
+}
+
+.motionFill {
+  width: 100%;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+}
+
+.cardInner {
+  height: 100%;
+  padding: 32px 16px 16px;
+}
+@media (min-width: 768px) {
+  .cardInner { padding-top: 40px; padding-bottom: 24px; }
+}
+@media (min-width: 1024px) {
+  .cardInner { padding-top: 64px; padding-left: 40px; padding-right: 40px; padding-bottom: 42px; }
+}
+
+.innerStack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100%;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 1024px) {
+  .headerBlock { gap: 24px; }
+}
+
+.titleStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .titleStack { gap: 12px; }
+}
+
+.subtitle {
+  min-height: 0;
+}
+@media (min-width: 768px) {
+  .subtitle { min-height: 24px; }
+}
+
+.subtitleHiddenMobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .subtitleHiddenMobile { display: block; }
+}
+
+.bodyStack {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .bodyStack { gap: 32px; }
+}
+@media (min-width: 1024px) {
+  .bodyStack { gap: 40px; }
+}
+
+.featuresStack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.divider {
+  height: 1px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+@media (min-width: 1024px) {
+  .featureList { gap: 8px; }
+}
+
+.featureRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctaStack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctaButtonNoLink {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .ctaButtonNoLink { margin-bottom: 26px; }
+}
+@media (min-width: 1024px) {
+  .ctaButtonNoLink { margin-bottom: 30px; }
+}

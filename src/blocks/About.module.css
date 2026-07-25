@@ -1,0 +1,126 @@
+.wrapper {
+  margin-top: -16px;
+  display: flex;
+  justify-content: center;
+}
+
+.outerStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.resumeWrap {
+  width: 100%;
+}
+
+.headerStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+@media (min-width: 1024px) {
+  .headerStack {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.textBlock {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .textBlock {
+    text-align: left;
+  }
+}
+
+.captionTypeset {
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+.wrapper .aboutCaption {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  min-height: 70px;
+}
+
+.spacer {
+  flex: 1 1 0;
+  min-width: 0;
+  order: 1;
+}
+
+.content {
+  flex: 1 1 0;
+  min-width: 0;
+  order: 3;
+}
+
+.contentInner {
+  padding: 6px 16px;
+  text-align: left;
+}
+
+.item:nth-child(even) .spacer {
+  order: 3;
+}
+
+.item:nth-child(even) .content {
+  order: 1;
+}
+
+.item:nth-child(even) .contentInner {
+  text-align: right;
+}
+
+.separator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  flex-shrink: 0;
+  order: 2;
+}
+
+.dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-primary-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.connector {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background-color: var(--color-grey-300);
+  margin: 4px 0;
+}

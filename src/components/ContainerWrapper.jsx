@@ -1,29 +1,19 @@
-import {useTheme} from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Container from '@mui/material/Container';
+import styles from './ContainerWrapper.module.css';
 
-export default function ContainerWrapper({children, sx, id}) {
-  const theme = useTheme();
-  const upMD = useMediaQuery(theme.breakpoints.up('md'));
-  const upXL = useMediaQuery(theme.breakpoints.up('xl'));
-  const downMD = useMediaQuery(theme.breakpoints.down('md'));
-
-  const isDesktop = (upMD || upXL) && !downMD;
-
+export default function ContainerWrapper({ children, style, className, id, paddingY = false }) {
   return (
     <>
-    <span
-      id={id}
-      style={{
-        display: "block",
-        height: "100px",
-        marginTop: "-100px",
-      }}
-    />
-      <Container {...(isDesktop && {maxWidth: upXL ? 'xl' : 'lg'})}
-                 sx={{...(downMD && {px: {xs: 2, sm: 4, md: 0}}), ...sx}}>
+      <span
+        id={id}
+        style={{
+          display: 'block',
+          height: '100px',
+          marginTop: '-100px',
+        }}
+      />
+      <div className={[styles.container, paddingY && styles.paddingY, className].filter(Boolean).join(' ')} style={style}>
         {children}
-      </Container>
+      </div>
     </>
   );
 }
