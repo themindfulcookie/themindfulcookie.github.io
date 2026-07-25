@@ -1,43 +1,37 @@
-import { useTheme } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
-import {withAlpha} from "../utils/colorUtils";
+import styles from './GraphicsCard.module.css';
 
-export default function GraphicsCard({ sx, children, overLay = false, bgImage, ...rest }) {
-  const theme = useTheme();
+export default function GraphicsCard({ style, className, children, overLay = false, bgImage, radius, ...rest }) {
+  // mobile-first fill: an unset tier inherits the nearest smaller defined tier,
+  // matching how MUI's sx breakpoint objects cascade upward.
+  const xs = radius?.xs;
+  const sm = radius?.sm ?? xs;
+  const md = radius?.md ?? sm;
+  const cssVars = radius
+    ? {
+        ...(xs !== undefined && { '--card-radius-xs': `${xs}px` }),
+        ...(sm !== undefined && { '--card-radius-sm': `${sm}px` }),
+        ...(md !== undefined && { '--card-radius-md': `${md}px` })
+      }
+    : {};
 
   return (
-    <Card
+    <div
       role="img"
-      rel="noopener noreferrer"
       aria-label="graphics card"
-      elevation={0}
-      sx={{
-        bgcolor: 'grey.100',
-        borderRadius: { xs: 6, sm: 8, md: 10 },
+      className={[styles.card, className].filter(Boolean).join(' ')}
+      style={{
+        ...cssVars,
         ...(bgImage && {
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }),
-
-        ...(overLay && {
-          position: 'relative',
-          '&:before': {
-            content: `' '`,
-            position: 'absolute',
-            width: 1,
-            height: 1,
-            top: 0,
-            left: 0,
-            background: typeof overLay === 'string' ? overLay : withAlpha(theme.vars.palette.grey[100], 0.75)
-          }
-        }),
-        ...sx
+        ...style
       }}
       {...rest}
     >
-      {overLay ? <Box sx={{ position: 'relative', height: 1 }}>{children}</Box> : children}
-    </Card>
+      {overLay && <div className={styles.overlay} style={{ background: typeof overLay === 'string' ? overLay : undefined }} />}
+      {overLay ? <div className={styles.contentAboveOverlay}>{children}</div> : children}
+    </div>
   );
 }

@@ -1,0 +1,88 @@
+.wrapper {
+  margin-top: -16px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .stack { gap: 32px; }
+}
+@media (min-width: 1024px) {
+  .stack { gap: 40px; }
+}
+
+.headingWrap {
+  max-width: 100%;
+  text-align: center;
+}
+
+.cardInner {
+  padding: 24px;
+}
+
+.grid {
+  display: grid;
+}
+
+.cell {
+  position: relative;
+}
+
+.cellInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 8px;
+  padding: 12px 0;
+}
+@media (min-width: 768px) {
+  .cellInner { gap: 16px; padding: 24px 24px; }
+}
+@media (min-width: 1024px) {
+  .cellInner { padding: 32px 32px; }
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-grey-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+@media (min-width: 1024px) {
+  .textStack { gap: 8px; }
+}
+
+.ctaStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaCaption {
+  max-width: 75%;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .ctaCaption { max-width: 45%; }
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}

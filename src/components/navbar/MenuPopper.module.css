@@ -1,0 +1,38 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.panel {
+  position: fixed;
+  top: 64px; /* navbar height, flush against its bottom edge, below xs/sm */
+  left: 0;
+  right: 0;
+  z-index: 1201;
+  overflow: hidden;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--color-background-paper);
+  border: 1px solid var(--color-grey-200);
+  border-top: none;
+  box-shadow: 0px 16px 10px 0px rgba(63, 58, 46, 0.06);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.panel.open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .panel {
+    top: 72px; /* navbar height, flush against its bottom edge, at sm-md */
+  }
+}

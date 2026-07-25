@@ -1,17 +1,22 @@
-import { alpha } from '@mui/material/styles';
+function hexToRgb(hex) {
+  const normalized = hex.replace('#', '');
+  const value = normalized.length === 3
+    ? normalized.split('').map((c) => c + c).join('')
+    : normalized;
+  const int = parseInt(value, 16);
+  return [(int >> 16) & 255, (int >> 8) & 255, int & 255];
+}
 
 export function withAlpha(color, opacity) {
-  // Case 1: normal color (hex, rgb, hsl…)
-  if (/^#|rgb|hsl|color/i.test(color)) {
-    return alpha(color, opacity);
+  if (color.startsWith('#')) {
+    const [r, g, b] = hexToRgb(color);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   }
 
-  // Case 2: CSS Var: var(--mui-palette-xxx) or var(--palette-xxx, #hex)
-  if (color.startsWith('var(')) {
-    // inject "Channel" *before the closing parenthesis of the var name only*
-    return color.replace(/(--[a-zA-Z0-9-]+)(.*)\)/, `$1Channel$2)`).replace(/^var\((.+)\)$/, `rgba(var($1) / ${opacity})`);
+  if (/^rgb/i.test(color)) {
+    const [r, g, b] = color.match(/[\d.]+/g);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   }
 
-  // Fallback
   return color;
 }

@@ -1,5 +1,3 @@
-import {createHashRouter, HashRouter, RouterProvider, useLocation} from 'react-router';
-import Box from "@mui/material/Box";
 import Navbar from "./blocks/navbar/Navbar";
 import NavbarContent from "./blocks/navbar/NavbarContent";
 import Hero from "./blocks/Hero";
@@ -15,7 +13,6 @@ import {testimonial} from "./data/testimonial";
 import Faq from "./blocks/Faq";
 import {faq} from "./data/faq";
 import {navbar} from "./data/navbar";
-import AppThemeProvider from "./components/AppThemeProvider";
 import Outcomes from "./blocks/Outcomes";
 import {outcomeSection} from "./data/outcomes";
 import Footer from "./blocks/Footer";
@@ -23,20 +20,18 @@ import {footer} from "./data/footer";
 
 export default function App() {
   return (
-    <AppThemeProvider>
-      <HashRouter>
-        <Navbar>
-          <NavbarContent {...navbar} />
-        </Navbar>
+    <>
+      <Navbar>
+        <NavbarContent {...navbar} />
+      </Navbar>
 
-        <Hero {...hero} />
-        <Reasons {...reasons} />
-        <About {...about} />
-        <Pricing {...pricing} />
-        <Outcomes {...outcomeSection} />
-        <Testimonial {...testimonial} />
-        <Faq {...faq} />
-        <Footer footer={footer}/>
-      </HashRouter>
-    </AppThemeProvider>);
+      <Hero {...hero} />
+      <Reasons {...reasons} />
+      <About {...about} />
+      <Pricing {...pricing} />
+      <Outcomes {...outcomeSection} />
+      <Testimonial {...testimonial} />
+      <Faq {...faq} />
+      <Footer footer={footer}/>
+    </>);
 }

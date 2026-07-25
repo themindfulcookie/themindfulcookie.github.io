@@ -1,0 +1,62 @@
+.wrapper {
+  margin-top: -32px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .stack { gap: 32px; }
+}
+
+.headingWrap {
+  max-width: 550px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1024px) {
+  .headingWrap { max-width: 700px; }
+}
+
+.masonry {
+  column-count: 2;
+  column-gap: 8px;
+}
+@media (min-width: 768px) {
+  .masonry { column-count: 3; column-gap: 12px; }
+}
+
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 8px;
+}
+@media (min-width: 768px) {
+  .masonryItem { margin-bottom: 12px; }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 8px;
+  padding: 12px;
+}
+@media (min-width: 1024px) {
+  .cardBody { padding: 16px; }
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

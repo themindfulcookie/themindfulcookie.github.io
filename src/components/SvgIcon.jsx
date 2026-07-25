@@ -1,34 +1,18 @@
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-
 export default function SvgIcon({ name, size = 24, color }) {
-  const theme = useTheme();
-
-  const fillColor = theme.vars.palette.text.primary
-  const strokeColor = theme.vars.palette.text.primary
-
-  const strokeWidth = 1.5;
-
   return (
-    <Box
+    <span
       role="none"
-      sx={{
-        '& svg': {
-          verticalAlign: 'middle',
-          display: 'block',
-          color: color || 'primary.main',
-          '& [data-two-tone="true"]': { color: theme.vars.palette.primary.lighter }
-        }
-      }}
+      style={{ color: color === 'inherit' ? 'inherit' : color || 'var(--color-primary-main)', display: 'inline-block' }}
     >
       <svg
         className={name}
         width={size}
         height={size}
-        {...(fillColor && { fill: fillColor })}
-        {...(strokeColor && { stroke: strokeColor })}
-        {...(strokeWidth && { strokeWidth })}
+        fill="var(--color-text-primary)"
+        stroke="var(--color-text-primary)"
+        strokeWidth={1.5}
+        style={{ verticalAlign: 'middle', display: 'block' }}
       />
-    </Box>
+    </span>
   );
 }
