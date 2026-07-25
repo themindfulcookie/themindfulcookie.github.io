@@ -79,13 +79,8 @@ export default function Pricing({heading, firstVisit, caption, plans}) {
 
                           <motion.div
                             initial={{scale: 0.96}}
-                            animate={{scale: plan.active ? [1, 1.015, 1] : 1}}
-                            transition={{
-                              duration: plan.active ? 1.6 : 0.6,
-                              delay: 0.05,
-                              ease: 'easeInOut',
-                              ...(plan.active && {repeat: Infinity, repeatType: 'loop'})
-                            }}
+                            animate={{scale: 1}}
+                            transition={{duration: 0.6, delay: 0.05, ease: 'easeInOut'}}
                             whileHover={{scale: 1.01, transition: {duration: 0.25}}}
                           >
                             <ButtonAnimationWrapper>
