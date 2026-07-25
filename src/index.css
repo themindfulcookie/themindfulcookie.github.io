@@ -15,7 +15,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+a, button {
     -webkit-tap-highlight-color: transparent;
 }
 

@@ -27,6 +27,7 @@
 .panel {
   border-radius: 16px;
   background-color: var(--color-grey-100);
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .panel {
