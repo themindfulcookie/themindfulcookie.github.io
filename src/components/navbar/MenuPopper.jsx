@@ -16,8 +16,8 @@ export default function MenuPopper({ drawerToggleProps, homeProps, children }) {
       setOpen(false);
     };
 
-    document.addEventListener('mousedown', handlePointerDown);
-    return () => document.removeEventListener('mousedown', handlePointerDown);
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
   }, [open]);
 
   return (
