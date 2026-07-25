@@ -1,4 +1,4 @@
-import {contactHrefWithSubject} from "../utils/constant";
+import {CONTACT_HREF} from "../utils/constant";
 
 const linkProps = { target: '_blank', rel: 'noopener noreferrer' };
 
@@ -16,7 +16,7 @@ export const pricing = {
       subtitle: '',
       price: 0,
       active: false,
-      exploreLink: { children: 'Prenota la chiamata conoscitiva', href: contactHrefWithSubject('Richiesta chiamata conoscitiva'), ...linkProps },
+      exploreLink: { children: 'Prenota la chiamata conoscitiva', href: CONTACT_HREF, ...linkProps },
       features: [
         "15 minuti per fare chiarezza e avere le informazioni di cui hai bisogno.",
         "Valuteremo insieme se il percorso è adatto a te, in base ai tuoi bisogni e ai tuoi obiettivi.",
@@ -29,7 +29,7 @@ export const pricing = {
       subtitle: 'per ogni incontro',
       active: true,
       price: 70,
-      exploreLink: { children: 'Inizia il percorso', href: contactHrefWithSubject('Richiesta inizio percorso'), ...linkProps },
+      exploreLink: { children: 'Inizia il percorso', href: CONTACT_HREF, ...linkProps },
       features: [
         "50 minuti di tempo per ogni consulenza.",
         "Comodamente da casa online via Google Meet.",
