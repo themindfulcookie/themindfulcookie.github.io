@@ -10,6 +10,10 @@ export const faq = {
       answer: `Certo, se hai dubbi o domande vuoi capire se il percorso è adatto a te, puoi contattarmi per una chiamata conoscitiva gratuita.`
     },
     {
+      question: `Soffro di un disturbo alimentare, posso iniziare il percorso con te?`,
+      answer: `I disturbi alimentari richiedono un trattamento multidisciplinare. Per poter lavorare insieme, è necessario associare il mio percorso ad un supporto psicologico. Se non hai un terapeuta di riferimento, sarò felice di consigliartene uno.`
+    },
+    {
       question: `Potrò contattarti tra una sessione e l’altra?`,
       answer: `Certo, potrai mandarmi una mail ogni volta che lo desideri, ti risponderò appena possibile.`
     },
