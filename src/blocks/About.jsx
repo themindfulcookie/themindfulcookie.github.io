@@ -6,7 +6,7 @@ import {motion} from '../utils/motion';
 import Cookie from "../assets/icons/Cookie";
 import styles from './About.module.css';
 
-export default function About({avatar, title, about, resume}) {
+export default function About({avatar, avatarAlt, title, about, resume}) {
   return (
     <ContainerWrapper id="about" paddingY className={styles.wrapper}>
       <div className={styles.outerStack}>
@@ -17,7 +17,7 @@ export default function About({avatar, title, about, resume}) {
             viewport={{once: true}}
             transition={{duration: 0.35, delay: 0.05}}
           >
-            <img className={styles.avatar} src={avatar} alt="Alice Ciani, dietista nutrizionista" loading="lazy" />
+            <img className={styles.avatar} src={avatar} alt={avatarAlt} loading="lazy" />
           </motion.div>
 
           <div className={styles.textBlock}>

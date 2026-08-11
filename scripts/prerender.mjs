@@ -24,8 +24,37 @@ async function main() {
   try {
     const page = await browser.newPage();
     await page.goto(url, {waitUntil: "networkidle0"});
-    // Give the last whileInView/animation effects a tick to attach.
-    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    // whileInView animations only fire once their element intersects the
+    // viewport, so scroll the full page in small steps to trigger every
+    // section's IntersectionObserver before capturing the DOM.
+    const scrollHeight = await page.evaluate(() => document.body.scrollHeight);
+    const viewportHeight = page.viewport().height;
+    for (let y = 0; y < scrollHeight; y += Math.round(viewportHeight * 0.75)) {
+      await page.evaluate((offset) => window.scrollTo(0, offset), y);
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    // Give the last whileInView/animation effects a tick to attach and run.
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    // WAAPI's fill:'forwards' keeps the animated result on screen but never
+    // writes it back to the inline style attribute, so page.content() would
+    // otherwise still serialize each element's pre-animation `initial` state
+    // (e.g. opacity:0). Commit each animation's computed result to the
+    // element's inline style before serializing so non-JS clients see the
+    // settled state instead of a blank page.
+    await page.evaluate(() => {
+      for (const anim of document.getAnimations()) {
+        try {
+          anim.commitStyles();
+        } catch {
+          // Animation may already be finished/discarded; nothing to commit.
+        }
+        anim.cancel();
+      }
+    });
+    await page.evaluate(() => window.scrollTo(0, 0));
 
     const html = await page.content();
     const outPath = path.join(rootDir, "dist", "index.html");
@@ -40,6 +69,8 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Prerender failed:", err);
-  process.exit(1);
+  // Best-effort: if headless Chromium can't launch or render on this CI
+  // runner, ship the plain Vite-built dist/index.html rather than blocking
+  // every deploy on a browser-automation failure.
+  console.error("Prerender failed, deploying without prerendered HTML:", err);
 });

@@ -6,6 +6,7 @@ export const hero = {
     label: "Il percorso di Mindful Eating personalizzato per fare finalmente pace con il cibo",
   },
   avatar: avatar,
+  avatarAlt: "Alice Ciani, dietista nutrizionista specializzata in mindful eating",
   headLine: "The Mindful Cookie",
   captionLine: "Dietista Nutrizionista Alice Ciani",
   primaryBtn: { children: "CONTATTAMI", href: CONTACT_HREF },

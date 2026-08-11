@@ -1,4 +1,4 @@
-import {CONTACT_EMAIL} from "../utils/constant";
+import {CONTACT_EMAIL, ORDINE_REGISTRATION} from "../utils/constant";
 
 export const privacyPolicy = {
   title: "Privacy Policy",
@@ -8,7 +8,7 @@ export const privacyPolicy = {
 - P.IVA 02983490182
 - CF: CNILCA94S48F205G
 - PEC: alice.ciani@pec.tsrm-pstrp.org
-- Iscritta all’Ordine TSRM e PSTRP di Pavia con numero 129
+- ${ORDINE_REGISTRATION[0].toUpperCase()}${ORDINE_REGISTRATION.slice(1)}
 
 La nostra politica è semplice: non raccogliamo, conserviamo o elaboriamo informazioni personali attraverso il nostro sito web.
 

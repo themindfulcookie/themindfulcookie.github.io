@@ -10,6 +10,9 @@ import path from "node:path";
 const rootDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
 async function main() {
+  // Loaded via Vite's SSR module runner (not plain Node `import()`) because
+  // src/** relies on Vite-style extensionless imports (e.g. pricing.js's
+  // `from "../utils/constant"`), which Node's ESM resolver can't handle.
   const server = await createServer({
     root: rootDir,
     server: {middlewareMode: true},
@@ -22,6 +25,9 @@ async function main() {
       await server.ssrLoadModule("/src/utils/constant.js");
     const {pricing} = await server.ssrLoadModule("/src/data/pricing.js");
     const paidPlan = pricing.plans.find((plan) => plan.price > 0);
+    if (!paidPlan) {
+      throw new Error("generate-llms-txt: no plan in src/data/pricing.js has a price > 0");
+    }
 
     content = `# The Mindful Cookie
 

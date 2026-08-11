@@ -1,4 +1,4 @@
-import {CONTACT_EMAIL, INSTAGRAM, TIKTOK, LINKEDIN} from "../utils/constant";
+import {CONTACT_EMAIL, INSTAGRAM, TIKTOK, LINKEDIN, ORDINE_REGISTRATION} from "../utils/constant";
 
 export const SITE_URL = "https://themindfulcookie.com/";
 
@@ -7,7 +7,7 @@ export const person = {
   "@type": "Person",
   "name": "Alice Ciani",
   "jobTitle": "Dietista Nutrizionista",
-  "description": "Dietista Nutrizionista specializzata in mindful eating e intuitive eating, iscritta all'Ordine TSRM e PSTRP di Pavia con numero 129.",
+  "description": `Dietista Nutrizionista specializzata in mindful eating e intuitive eating, ${ORDINE_REGISTRATION}.`,
   "url": SITE_URL,
   "image": `${SITE_URL}og-image.jpg`,
   "email": `mailto:${CONTACT_EMAIL}`,
