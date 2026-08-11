@@ -16,7 +16,7 @@ Il mio approccio nutrizionale si basa sui principi del mindful eating e dell’i
     `Laurea magistrale in Scienze della nutrizione umana - Università degli Studi di Milano\n2021`,
     `Laurea triennale in Dietistica - Università degli Studi di Milano\n2019`,
     `Tirocinio da dietista - ASST Santi Paolo e Carlo, Milano\n2018 - 2019`,
-    `Tirocinio da dietista - Istituto Auxologico Italiano\n2018`,
+    `Tirocinio da dietista - Istituto Auxologico Italiano, Milano\n2018`,
     `Tirocinio da dietista - Camst Group, presso Istituto Clinico Humanitas, Milano\n2017`,
     `Laurea triennale in Scienze e tecniche psicologiche - Università degli Studi di Pavia\n2016`,
   ]
