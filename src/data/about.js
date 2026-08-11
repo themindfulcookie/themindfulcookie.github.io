@@ -4,7 +4,7 @@ export const about = {
   avatar: avatar,
   title: "Chi sono",
   about: `
-Sono Alice, Dietista Nutrizionista e dr.ssa magistrale in Nutrizione umana. Il mio percorso universitario, però, non è iniziato nel mondo della nutrizione. Prima di diventare dietista nutrizionista, ho conseguito una laurea triennale in scienze e tecniche psicologiche. Amo vivere il cibo con totale spontaneità e consapevolezza nel rispetto del mio corpo e delle sue necessità.
+Sono Alice, Dietista Nutrizionista e dr.ssa magistrale in Nutrizione umana, iscritta all’Ordine TSRM e PSTRP di Pavia con il numero 129. Il mio percorso universitario, però, non è iniziato nel mondo della nutrizione. Prima di diventare dietista nutrizionista, ho conseguito una laurea triennale in scienze e tecniche psicologiche. Amo vivere il cibo con totale spontaneità e consapevolezza nel rispetto del mio corpo e delle sue necessità.
 Anche io, come te, ho avuto un rapporto altalenante con il cibo, fino a comprendere che l’ascolto del corpo è la chiave. Da me non riceverai imposizioni o divieti ma un percorso di comprensione e fiducia.
 Il mio approccio nutrizionale si basa sui principi del mindful eating e dell’intuitive eating, senza l’utilizzo di diete restrittive.
 `,
