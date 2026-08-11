@@ -39,7 +39,7 @@ export default function Hero({avatar, chip, headLine, captionLine, primaryBtn, s
               viewport={{once: true}}
               transition={{duration: 0.4, delay: 0.2, ease: "linear"}}
             >
-              <Typography variant="h1" className={styles.headline}>
+              <Typography variant="h1" component="h2" className={styles.headline}>
                 {headLine}
               </Typography>
             </motion.div>
@@ -67,7 +67,7 @@ export default function Hero({avatar, chip, headLine, captionLine, primaryBtn, s
                 ease: [0.215, 0.61, 0.355, 1],
               }}
             >
-              <Typography variant="h3" className={styles.caption}>
+              <Typography variant="h3" component="h1" className={styles.caption}>
                 {captionLine}
               </Typography>
             </motion.div>
@@ -104,7 +104,13 @@ export default function Hero({avatar, chip, headLine, captionLine, primaryBtn, s
               animate={{opacity: 1}}
               transition={{duration: 0.25, ease: "linear", delay: 0.6}}
             >
-              <img className={styles.avatar} src={avatar} alt="" />
+              <img
+                className={styles.avatar}
+                src={avatar}
+                alt="Alice Ciani, dietista nutrizionista specializzata in mindful eating"
+                fetchPriority="high"
+                loading="eager"
+              />
             </motion.div>
           </div>
         </div>

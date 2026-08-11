@@ -10,6 +10,7 @@ export const navbar = {
       <StrokeIcon icon={Instagram} size={24} color="currentColor" strokeWidth={2} />,
     href: INSTAGRAM,
     ...linkProps,
+    "aria-label": "Instagram",
     style: {minWidth: 40, width: 40, height: 40, padding: 0}
   },
   primaryBtn: {children: 'CONTATTAMI', href: CONTACT_HREF, ...linkProps},

@@ -7,7 +7,7 @@ export const hero = {
   },
   avatar: avatar,
   headLine: "The Mindful Cookie",
-  captionLine: "Dietista Alice Ciani",
+  captionLine: "Dietista Nutrizionista Alice Ciani",
   primaryBtn: { children: "CONTATTAMI", href: CONTACT_HREF },
   subtitle: `
 Contattami per una chiamata conoscitiva gratuita o per iniziare direttamente il percorso.

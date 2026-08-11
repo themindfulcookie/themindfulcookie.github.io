@@ -6,9 +6,9 @@ export default function NavSecondaryButton({ style, children, ...rest }) {
       variant="outlined"
       size="small"
       style={style}
+      aria-label="nav-secondary-btn"
       {...rest}
       rel="noopener noreferrer"
-      aria-label="nav-secondary-btn"
     >
       {children}
     </Button>

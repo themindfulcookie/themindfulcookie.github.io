@@ -17,10 +17,12 @@ import Outcomes from "./blocks/Outcomes";
 import {outcomeSection} from "./data/outcomes";
 import Footer from "./blocks/Footer";
 import {footer} from "./data/footer";
+import Seo from "./components/Seo";
 
 export default function App() {
   return (
     <>
+      <Seo faqList={faq.faqList} plans={pricing.plans} />
       <Navbar>
         <NavbarContent {...navbar} />
       </Navbar>

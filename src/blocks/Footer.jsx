@@ -1,13 +1,14 @@
 import {useEffect, useRef, useState} from "react";
 import {motion} from '../utils/motion';
 import ContainerWrapper from "../components/ContainerWrapper";
-import {INSTAGRAM, TIKTOK} from "../utils/constant";
+import {INSTAGRAM, TIKTOK, LINKEDIN} from "../utils/constant";
 import Typography from "../components/Typography";
 import StrokeIcon from "../components/StrokeIcon";
 import {privacyPolicy} from "../data/privacy";
 import {cookiePolicy} from "../data/cookie";
 import Instagram from "../assets/icons/Instagram";
 import TikTok from "../assets/icons/TikTok";
+import LinkedIn from "../assets/icons/LinkedIn";
 import styles from './Footer.module.css';
 
 export default function Footer({footer}) {
@@ -40,7 +41,7 @@ export default function Footer({footer}) {
               target="_blank"
               href={INSTAGRAM}
               rel="noopener noreferrer"
-              aria-label="nav-secondary-btn"
+              aria-label="Instagram"
             >
               <StrokeIcon icon={Instagram} size={36} color="var(--color-primary-dark)" strokeWidth={1}/>
             </a>
@@ -49,9 +50,18 @@ export default function Footer({footer}) {
               target="_blank"
               href={TIKTOK}
               rel="noopener noreferrer"
-              aria-label="nav-secondary-btn"
+              aria-label="TikTok"
             >
               <StrokeIcon icon={TikTok} size={36} color="var(--color-primary-dark)" strokeWidth={1}/>
+            </a>
+            <a
+              className={styles.iconButton}
+              target="_blank"
+              href={LINKEDIN}
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <StrokeIcon icon={LinkedIn} size={36} color="var(--color-primary-dark)" strokeWidth={1}/>
             </a>
           </div>
           {footer.map((item, i) => (

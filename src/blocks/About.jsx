@@ -17,7 +17,7 @@ export default function About({avatar, title, about, resume}) {
             viewport={{once: true}}
             transition={{duration: 0.35, delay: 0.05}}
           >
-            <img className={styles.avatar} src={avatar} alt="" />
+            <img className={styles.avatar} src={avatar} alt="Alice Ciani, dietista nutrizionista" loading="lazy" />
           </motion.div>
 
           <div className={styles.textBlock}>

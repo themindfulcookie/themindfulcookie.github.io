@@ -35,7 +35,7 @@ export const faq = {
     },
     {
       question: `Le tue consulenze sostituiscono un percorso psicologico?`,
-      answer: `No, come avrai letto sopra, ho conseguito una laurea triennale in scienze e tecniche psicologiche, ma questo non mi rende una psicologa. Come dietista collaboro con psicologi e psicoterapeuti.`
+      answer: `No, come avrai letto sopra, ho conseguito una laurea triennale in scienze e tecniche psicologiche, ma questo non mi rende una psicologa. Come dietista nutrizionista collaboro con psicologi e psicoterapeuti.`
     },
   ],
 };
